@@ -87,7 +87,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   address.innerHTML = restaurant.address;
 
   const image = document.getElementById('restaurant-img');
-  image.className = 'restaurant-img'
+  image.className = 'restaurant-img-test';
+  image.alt = restaurant.name + " restaurant image";
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -191,4 +192,12 @@ getParameterByName = (name, url) => {
   if (!results[2])
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+    .register('/sw.js')
+    .catch(function(err) {
+        console.log(err);
+    });
 }
